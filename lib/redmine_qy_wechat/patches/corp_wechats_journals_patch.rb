@@ -38,7 +38,7 @@ module CorpWechatsJournalsPatch
         #填写确认并应用的应用AgentId
   
           @group_client.message.send_text(send_people_wx, "", "", app_id,
-          "#{l(:msg_focus)} <a href=\'" + Setting.protocol + "://" + Setting.host_name + "/issues/#{@issue.id}\'>#{@issue.tracker} ##{@issue.id}: #{@issue.subject}</a> #{l(:msg_by)} <a href=\'javascript:void(0);\'>#{@issue.journals.last.user}</a> #{l(:msg_updated)}")
+          "#{l(:msg_focus)} <a href=\'" + Setting.protocol + "://" + Setting.host_name + "/issues/#{@issue.id}\'>#{@issue.tracker} ##{@issue.id}: #{@issue.subject}</a> #{l(:msg_by)} <a href=\'javascript:void(0);\'>#{@issue.journals.last.user}</a> #{l(:msg_updated)}<br>----------<br>#{@issue.notes}")
         end
       rescue
       end
@@ -71,7 +71,7 @@ module CorpWechatsJournalsPatch
       issue_url =  Setting.protocol + "://" + Setting.host_name + "/issues/#{@issue.id}"
       issue_title = @issue.project.name
       
-      issue_text = "#{@issue.tracker} ##{@issue.id}: #{@issue.subject} #{l(:msg_by)} #{@issue.journals.last.user} #{l(:msg_updated)}(##{@issue.journals.size})"
+      issue_text = "#{@issue.tracker} ##{@issue.id}: #{@issue.subject} #{l(:msg_by)} #{@issue.journals.last.user} #{l(:msg_updated)}(##{@issue.journals.size})\n----------\n#{@issue.notes}"
     
       data = {
         touser: send_people_dd,
